@@ -2,28 +2,28 @@ import java.time.LocalDate;
 
 public class Main {
     ///Метод для решения задания 1
-    public static boolean definitionLeapYear(int year) {
-        if (year % 400 == 0) {
-            return true;
+    public static void definitionLeapYear(int year) {
+        if (year % 400 == 0 || year % 4 == 0 && year % 100 != 0) {
+            System.out.println(year + " - високосный год");
         } else {
-            return year % 4 == 0 && year % 100 != 0;
+            System.out.println(year + " - не високосный год");
         }
     }
 
     ///Метод для решения задания 2
-    public static byte checkNeededVersion(int os, int year) {
+    public static void checkNeededVersion(int os, int year) {
         int currentYear = LocalDate.now().getYear();
         if (os == 0) {
             if (year < currentYear) {
-                return 1;
+                System.out.println("Установите облегченную версию приложения для iOS по ссылке");
             } else {
-                return 2;
+                System.out.println("Установите приложение для iOS по ссылке");
             }
         } else {
             if (year < currentYear) {
-                return 3;
+                System.out.println("Установите облегченную версию приложения для Android по ссылке");
             } else {
-                return 4;
+                System.out.println("Установите приложение для Android по ссылке");
             }
         }
     }
@@ -47,29 +47,12 @@ public class Main {
         ///Задание 1
         System.out.println("  Задание 1");
         int year = 2011;  ///Использую один и тот же год для 1 и 2 задания
-        boolean yearIsLeap = definitionLeapYear(year);
-        if (yearIsLeap) {
-            System.out.println(year + " - високосный год");
-        } else {
-            System.out.println(year + " - не високосный год");
-        }
+        definitionLeapYear(year);
 
         ///Задание 2
         System.out.println("  Задание 2");
-        int os = 1;
-        byte neededVersion = checkNeededVersion(os, year);
-        if (neededVersion == 1) {
-            System.out.println("Установите облегченную версию приложения для iOS по ссылке");
-        }
-        if (neededVersion == 2) {
-            System.out.println("Установите приложение для iOS по ссылке");
-        }
-        if (neededVersion == 3) {
-            System.out.println("Установите облегченную версию приложения для Android по ссылке");
-        }
-        if (neededVersion == 4) {
-            System.out.println("Установите приложение для Android по ссылке");
-        }
+        int os = 0;
+        checkNeededVersion(os, year);
 
         ///Задание 3
         System.out.println("  Задание 3");
